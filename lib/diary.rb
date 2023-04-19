@@ -1,7 +1,6 @@
 class Diary
   def initialize
     @diary_entries = []
-    
   end
 
   def add(entry) # entry is an instance of DiaryEntry
@@ -17,19 +16,28 @@ class Diary
     @count = 0
     for entry in @diary_entries
       @count += entry.count_words
-    end 
+    end
     return @count
     # Returns the number of words in all diary entries
     # HINT: This method should make use of the `count_words` method on DiaryEntry.
   end
 
-  def reading_time(wpm) # wpm is an integer representing
-                        # the number of words the user can read per minute
+  def reading_time(wpm)
+    count_words / wpm.to_f
+
+    # wpm is an integer representing
+    # the number of words the user can read per minute
     # Returns an integer representing an estimate of the reading time in minutes
     # if the user were to read all entries in the diary.
   end
 
-  def find_best_entry_for_reading_time(wpm, minutes)
+  def best_entry(wpm, minutes)
+    chunk = wpm * minutes
+    for entry in @diary_entries
+      puts entry if entry.count_words <= chunk
+    end
+    # @diary_entries.select { |entry| entry.count_words <= chunk }
+
     # `wpm` is an integer representing the number of words the user can read
     # per minute.
     # `minutes` is an integer representing the number of minutes the user
