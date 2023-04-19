@@ -4,7 +4,7 @@ class Diary
   end
 
   def add(entry) # entry is an instance of DiaryEntry
-    # Returns nothing
+    @diary << entry
   end
 
   def all
