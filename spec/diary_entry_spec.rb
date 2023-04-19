@@ -7,4 +7,7 @@ describe DiaryEntry do
             expect(monday.count_words).to eq 4
         end 
     end 
+    context "takes an entry and the users wpm" do
+        it "returns how long user would take to read that" do 
+    end 
 end
