@@ -1,10 +1,12 @@
 class Diary
   def initialize
     @diary = []
+    @count = 0
   end
 
   def add(entry) # entry is an instance of DiaryEntry
-    @diary << entry
+    @entry = entry
+    @diary << @entry
   end
 
   def all
@@ -13,6 +15,7 @@ class Diary
   end
 
   def count_words
+    return @entry.count_words
     # Returns the number of words in all diary entries
     # HINT: This method should make use of the `count_words` method on DiaryEntry.
   end
