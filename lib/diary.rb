@@ -32,14 +32,18 @@ class Diary
   end
 
   def best_entry(wpm, minutes)
-    @result = ""
+    @result = []
     chunk = wpm * minutes
     for entry in @diary_entries
-      if entry.count_words == chunk
-        @result = entry.contents
+      if entry.count_words <= chunk
+        @result << entry.contents
+        @result.sort_by {|str| str.length }
       end  
     end
-    @result 
+    @result = @result.sort_by {|str| str.length }
+    @result[-1]
+    
+    # our previous code is line 47
     # @diary_entries.select { |entry| entry.count_words <= chunk }
 
     # `wpm` is an integer representing the number of words the user can read
